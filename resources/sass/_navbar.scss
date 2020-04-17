@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap');
+$nav-color: rgb(27, 27, 27);
+
+header {
+	background-color: $nav-color;
+}
+
+.nav-top {
+	background-color: $nav-color;
+	color: white;
+}
+
+.navbar {
+	background-color: $nav-color !important;
+	padding: 15px 5% !important;
+}
+
+.navbar-brand {
+	img {
+		width: 300px;
+		height: auto;
+	}
+}
+
+$duration: .2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+.nav-item {
+	a {
+		font-size: 1.3em;
+		font-family: "Muli";
+		font-weight: 300;
+		margin-right: 20px;
+		color: white !important;
+		position: relative;
+		text-decoration: none;
+		padding-bottom: 8px;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 2px;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: white;
+		}
+		&:before {
+			opacity: 0;
+			transform: translateY(- $distance);
+			transition: transform 0s $easeOutBack, opacity 0s;
+		}
+		&:after {
+			opacity: 0;
+			transform: translateY($distance/2);
+			transition: transform $duration $easeOutBack, opacity $duration;
+		}
+		&:hover,
+		&:focus {
+			&:before,
+			&:after {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			&:before {
+				transition: transform $duration $easeOutBack, opacity $duration;
+			}
+			&:after {
+				transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+			}
+		}
+	}
+}
+
+footer {
+	background-color: $nav-color;
+	color: white;
+	padding: 50px 10%;
+	width: 100vw;
+
+	.sect1,
+	.sect2,
+	.sect3 {
+		padding: 0;
+		border-right: 1px solid white;
+	}
+
+	.sect3 {
+		border-right: 0px solid black;
+	}
+
+	img {
+		width: 300px;
+		height: auto;
+	}
+
+	ul {
+		list-style-type: none;
+
+		li {
+			margin-bottom: 20px;
+		}
+
+		a {
+			text-decoration: none;
+			color: white;
+
+			&:hover {
+				color: white;
+			}
+		}
+	}
+}

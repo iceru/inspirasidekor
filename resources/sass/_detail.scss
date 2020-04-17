@@ -1,0 +1,24 @@
+.detail-main {
+	padding: 70px 10%;
+}
+
+.recent-post {
+	margin-top: 80px;
+	position: sticky;
+}
+
+.recent-item {
+	margin: 20px 0;
+
+	div {
+		padding: 0;
+		padding-left: 15px;
+	}
+	img {
+		width: 110px;
+		height: 110px;
+		object-fit: cover;
+		object-position: center;
+		border-radius: 100px;
+	}
+}

@@ -1,0 +1,21 @@
+.post-main {
+	padding: 50px 10%;
+
+	.ads {
+		img {
+			margin: 0 0 30px 0;
+			width: 400px;
+		}
+	}
+}
+
+.post-item {
+	margin: 10px 0 20px 0;
+
+	img {
+		width: 300px;
+		height: 150px;
+		object-fit: cover;
+		object-position: center;
+	}
+}

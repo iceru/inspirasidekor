@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa0e03d42cbad725be5e14c94410ac1f",
+    "content-hash": "0d62979bb3487c4816b4b28e78f0416c",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -989,6 +989,46 @@
                 "validator"
             ],
             "time": "2020-02-13T22:36:52+00:00"
+        },
+        {
+            "name": "faryar76/lrm",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/faryar76/lrm.git",
+                "reference": "3481451db973327ef732a4e5a56bfcb761d17a1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/faryar76/lrm/zipball/3481451db973327ef732a4e5a56bfcb761d17a1a",
+                "reference": "3481451db973327ef732a4e5a56bfcb761d17a1a",
+                "shasum": ""
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Faryar76\\LRM\\LRMServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faryar76\\LRM\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "faryar",
+                    "email": "faryar76@hotmil.com"
+                }
+            ],
+            "description": "this package usefull for manage laravel projects in sharing hosts",
+            "time": "2019-01-20T10:41:58+00:00"
         },
         {
             "name": "fideloper/proxy",

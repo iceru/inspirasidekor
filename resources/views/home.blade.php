@@ -5,48 +5,34 @@ Inspirasi Dekor
 @endsection
 
 @section('content')
-<div id="carouselId" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselId" data-slide-to="1"></li>
-    <li data-target="#carouselId" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
-      <img src="img/banner1.jpg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Title</h3>
-        <p>Description</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img/banner2.jpg" alt="Second slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Title</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur autem ratione quia unde quibusdam quis
-          quod tenetur dicta perspiciatis ullam voluptate perferendis distinctio magni nisi iusto, eos aut neque?
-          Obcaecati?</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img/banner3.jpg" alt="Third slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h3>Title</h3>
-        <p>Description</p>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
 
 <div class="section1 row">
+  <div id="carouselId" class="carousel slide col-12" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img src="{{ asset('storage/' . $story->image) }}" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>{{ $story->title }}</h3>
+        </div>
+      </div>
+      @foreach ($topstory as $story)
+      <div class="carousel-item">
+        <img src="{{ asset('storage/' . $story->image) }}" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>{{ $story->title }}</h3>
+        </div>
+      </div>
+      @endforeach
+    </div>
+    <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
   <div class="title col-12">
     <h1>Top Stories</h1>
     <hr>
@@ -54,21 +40,6 @@ Inspirasi Dekor
 
   <div class="story col-md-9">
     <div class="row">
-      <div class="story-item1 col-12">
-        <div class="row">
-          <div class="story-img col-md-4">
-            <img src="img/banner1.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="story-text col-md-8">
-            <h1>Story Title</h1>
-            <p><i class="fa fa-user-circle" aria-hidden="true"></i> Author, Date Post</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima tempora sint dolorem quaerat quidem,
-              reprehenderit libero sequi, voluptas expedita eveniet aspernatur animi sed, officiis laborum amet
-              dignissimos incidunt deserunt ratione?</p>
-          </div>
-        </div>
-      </div>
-
       @foreach ($topstory as $story)
       <div class="story-item2 col-md-6">
         <div class="row">
@@ -76,29 +47,18 @@ Inspirasi Dekor
             <img src="{{ asset('storage/'.$story->image) }}" class="img-fluid" alt="">
           </div>
           <div class="story-text col-md-8">
-            <h1>{{ $story->title }}</h1>
-            <p><i class="fa fa-calendar-minus"
+            <a href="{{ '/post/' . $story->slug }}">
+              <h1>{{ $story->title }}</h1>
+            </a>
+            <p><i class="fa fa-calendar-alt"
                 aria-hidden="true"></i>&nbsp;{{ \Carbon\Carbon::parse($story->created_at)->format('d-m-Y')}}</p>
-            <p>{!! \Illuminate\Support\Str::limit($story->content, 300, $end='...') !!} <a href="">Read More</a></p>
+            <p>{!! \Illuminate\Support\Str::limit($story->content, 200, $end='...') !!} <a
+                href="{{ '/post/' . $story->slug }}">Read More</a></p>
           </div>
         </div>
       </div>
       @endforeach
 
-      <div class="story-item2 col-md-6">
-        <div class="row">
-          <div class="story-img col-md-4">
-            <img src="img/banner3.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="story-text col-md-8">
-            <h1>Story Title</h1>
-            <p><i class="fa fa-user-circle" aria-hidden="true"></i> Author, Date Post</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem repellendus deserunt maxime cum
-              incidunt, consequuntur aut autem fugit quas at, officia harum earum eos quis, expedita illum aliquid
-              quibusdam.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -115,43 +75,26 @@ Inspirasi Dekor
   </div>
   <div class="architecture col-md-6">
     <h1 class="text-center">Architecture</h1>
-    <h3>Story Title</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
+    @foreach ($archi as $archi)
+    <a href="{{ '/post/' . $archi->slug }}">
+      <h4>{{ $archi->title }}</h3>
+    </a>
+    <p>{!! \Illuminate\Support\Str::limit($archi->content, 200, $end='...') !!} <a
+        href="{{ '/post/' . $archi->slug }}">Read More</a></p>
     <hr>
-    <h3>Story Title</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
-    <hr>
-    <h3>Story Title</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
-    <hr>
+    @endforeach
   </div>
 
   <div class="event-decor col-md-6">
     <h1 class="text-center">Event Decor</h1>
-    <h3 class="text-right">Story Title</h3>
-    <p class="text-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas
-      error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
+    @foreach ($decor as $decor)
+    <a href="{{ '/post/' . $decor->slug }}">
+      <h4 class="text-right">{{ $decor->title }}</h4>
+    </a>
+    <p class="text-right">{!! \Illuminate\Support\Str::limit($decor->content, 200, $end='...') !!} <a
+        href="{{ '/post/' . $decor->slug }}">Read More</a></p>
     <hr>
-    <h3 class="text-right">Story Title</h3>
-    <p class="text-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas
-      error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
-    <hr>
-    <h3 class="text-right">Story Title</h3>
-    <p class="text-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptates voluptas
-      error aperiam
-      repellat facilis ipsam omnis expedita eveniet optio! Suscipit, accusamus. Rerum quod maxime, porro error
-      incidunt molestias laboriosam.</p>
-    <hr>
+    @endforeach
   </div>
 </div>
 
